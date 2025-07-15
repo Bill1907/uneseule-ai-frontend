@@ -11,7 +11,7 @@ export default async function AuthPage({
   const { userId } = await auth();
 
   if (userId) {
-    redirect(`/${locale}/service/app`);
+    redirect(`/${locale}/service/product`);
   }
 
   return (
@@ -25,8 +25,8 @@ export default async function AuthPage({
         </div>
 
         <SignIn
-          afterSignInUrl={`/${locale}/service/app`}
-          afterSignUpUrl={`/${locale}/service/app`}
+          afterSignInUrl={`/${locale}/service/product`}
+          afterSignUpUrl={`/${locale}/service/product`}
           routing="hash"
           appearance={{
             elements: {
