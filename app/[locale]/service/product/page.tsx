@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { useTranslations } from "@/lib/translations";
+import { getTranslations, type Locale } from "@/lib/translations";
 import { getUserOnboarding } from "@/actions/onboarding";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default async function AppPage({
 }) {
   const { locale } = await params;
   const { userId } = await auth();
-  const t = useTranslations(locale as any);
+  const t = getTranslations(locale as Locale);
 
   if (!userId) {
     redirect(`/${locale}/service/product/auth`);

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "@/lib/translations";
+import { getTranslations, type Locale } from "@/lib/translations";
 
 export default async function LandingPage({
   params,
@@ -8,7 +8,7 @@ export default async function LandingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const t = useTranslations(locale as any);
+  const t = getTranslations(locale as Locale);
 
   return (
     <div className="min-h-screen flex flex-col">

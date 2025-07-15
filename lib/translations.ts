@@ -392,6 +392,7 @@ export const translations = {
 
 export function getTranslation(locale: Locale, key: string) {
   const keys = key.split(".");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let value: any = translations[locale];
 
   for (const k of keys) {
@@ -401,6 +402,6 @@ export function getTranslation(locale: Locale, key: string) {
   return value || key;
 }
 
-export function useTranslations(locale: Locale) {
+export function getTranslations(locale: Locale) {
   return (key: string) => getTranslation(locale, key);
 }

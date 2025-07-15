@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
-import { useTranslations } from "@/lib/translations";
+import { getTranslations, type Locale } from "@/lib/translations";
 import { useSupabaseClient } from "@/hooks/use-supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,7 +43,7 @@ export default function OnboardingPage() {
     feedbackStyle: "",
   });
 
-  const t = useTranslations(locale as "ko" | "en" | "es");
+  const t = getTranslations(locale as Locale);
 
   const handleInputChange = (
     field: keyof OnboardingForm,

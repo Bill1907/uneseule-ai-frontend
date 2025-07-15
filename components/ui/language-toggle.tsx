@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useTransition, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Globe, Loader2 } from "lucide-react";
@@ -14,7 +14,6 @@ const languages = [
 export default function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const router = useRouter();
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -68,8 +67,7 @@ export default function LanguageToggle() {
 
     startTransition(() => {
       const newPath = pathname.replace(`/${currentLocale}`, `/${newLocale}`);
-      router.replace(newPath);
-      setIsOpen(false);
+      window.location.href = newPath;
     });
   };
 
