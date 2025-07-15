@@ -1,0 +1,93 @@
+{
+  "dashboard": {
+    "title": "Panel de Aprendizaje de Idiomas",
+    "welcome": "¡Bienvenido a nuestro servicio de aprendizaje de idiomas con IA!",
+    "aiChat": {
+      "title": "Tutor de IA",
+      "description": "Practica tus habilidades lingüísticas con nuestro tutor de IA en tiempo real",
+      "button": "Iniciar Conversación"
+    },
+    "documentAnalysis": {
+      "title": "Análisis de Texto",
+      "description": "Sube texto y obtén análisis de gramática y expresiones",
+      "button": "Analizar"
+    },
+    "imageGeneration": {
+      "title": "Aprendizaje de Vocabulario",
+      "description": "Aprende nuevo vocabulario con imágenes y ayudas visuales",
+      "button": "Comenzar a Aprender"
+    }
+  },
+  "navigation": {
+    "dashboard": "Panel de Control",
+    "library": "Biblioteca",
+    "reports": "Informes",
+    "settings": "Configuración",
+    "auth": "Autenticación"
+  },
+  "common": {
+    "language": "Idioma",
+    "korean": "한국어",
+    "english": "English",
+    "spanish": "Español"
+  },
+  "onboarding": {
+    "title": "Comenzar a Aprender Idiomas",
+    "subtitle": "Por favor proporciona información para el aprendizaje personalizado de idiomas",
+    "age": "Edad",
+    "agePlaceholder": "Ingresa tu edad",
+    "learningLanguage": "Idioma a Aprender",
+    "selectLanguage": "Selecciona el idioma que quieres aprender",
+    "sex": "Género",
+    "selectSex": "Selecciona tu género",
+    "male": "Masculino",
+    "female": "Femenino",
+    "other": "Otro",
+    "preferNotToSay": "Prefiero no decir",
+    "learningGoals": "Objetivos de Aprendizaje",
+    "learningGoalsPlaceholder": "Por favor describe tus objetivos de aprendizaje de idiomas en detalle",
+    "languageLevel": "Nivel Actual del Idioma",
+    "selectLevel": "Selecciona tu nivel actual del idioma",
+    "beginner": "Principiante",
+    "elementary": "Elemental",
+    "intermediate": "Intermedio",
+    "upperIntermediate": "Intermedio Alto",
+    "advanced": "Avanzado",
+    "proficient": "Competente",
+    "interests": "Intereses (Selecciona múltiples)",
+    "interestOptions": {
+      "culture": "Cultura",
+      "business": "Negocios",
+      "travel": "Viajes",
+      "technology": "Tecnología",
+      "sports": "Deportes",
+      "music": "Música",
+      "movies": "Películas",
+      "cooking": "Cocina",
+      "books": "Libros",
+      "science": "Ciencia",
+      "art": "Arte",
+      "games": "Juegos"
+    },
+    "tutorStyle": "Estilo de Tutor Preferido",
+    "selectTutorStyle": "Selecciona tu estilo de tutor preferido",
+    "tutorStyles": {
+      "encouraging": "Alentador",
+      "challenging": "Desafiante",
+      "patient": "Paciente",
+      "structured": "Estructurado",
+      "conversational": "Conversacional"
+    },
+    "feedbackStyle": "Estilo de Retroalimentación Preferido",
+    "selectFeedbackStyle": "Selecciona tu estilo de retroalimentación preferido",
+    "feedbackStyles": {
+      "immediate": "Corrección Inmediata",
+      "summary": "Retroalimentación Resumida",
+      "gentle": "Corrección Suave",
+      "detailed": "Explicación Detallada",
+      "motivational": "Enfoque Motivacional"
+    },
+    "complete": "Completar",
+    "completing": "Completando..."
+  }
+}

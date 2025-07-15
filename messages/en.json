@@ -1,0 +1,93 @@
+{
+  "dashboard": {
+    "title": "Language Learning Dashboard",
+    "welcome": "Welcome to our AI language learning service!",
+    "aiChat": {
+      "title": "AI Language Tutor",
+      "description": "Practice your language skills with our AI tutor in real-time",
+      "button": "Start Conversation"
+    },
+    "documentAnalysis": {
+      "title": "Text Analysis",
+      "description": "Upload text and get grammar and expression analysis",
+      "button": "Analyze"
+    },
+    "imageGeneration": {
+      "title": "Vocabulary Learning",
+      "description": "Learn new vocabulary with images and visual aids",
+      "button": "Start Learning"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "library": "Library",
+    "reports": "Reports",
+    "settings": "Settings",
+    "auth": "Authentication"
+  },
+  "common": {
+    "language": "Language",
+    "korean": "한국어",
+    "english": "English",
+    "spanish": "Español"
+  },
+  "onboarding": {
+    "title": "Start Learning Languages",
+    "subtitle": "Please provide information for personalized language learning",
+    "age": "Age",
+    "agePlaceholder": "Enter your age",
+    "learningLanguage": "Learning Language",
+    "selectLanguage": "Select the language you want to learn",
+    "sex": "Gender",
+    "selectSex": "Select your gender",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "preferNotToSay": "Prefer not to say",
+    "learningGoals": "Learning Goals",
+    "learningGoalsPlaceholder": "Please describe your language learning goals in detail",
+    "languageLevel": "Current Language Level",
+    "selectLevel": "Select your current language level",
+    "beginner": "Beginner",
+    "elementary": "Elementary",
+    "intermediate": "Intermediate",
+    "upperIntermediate": "Upper Intermediate",
+    "advanced": "Advanced",
+    "proficient": "Proficient",
+    "interests": "Interests (Select multiple)",
+    "interestOptions": {
+      "culture": "Culture",
+      "business": "Business",
+      "travel": "Travel",
+      "technology": "Technology",
+      "sports": "Sports",
+      "music": "Music",
+      "movies": "Movies",
+      "cooking": "Cooking",
+      "books": "Books",
+      "science": "Science",
+      "art": "Art",
+      "games": "Games"
+    },
+    "tutorStyle": "Preferred Tutor Style",
+    "selectTutorStyle": "Select your preferred tutor style",
+    "tutorStyles": {
+      "encouraging": "Encouraging",
+      "challenging": "Challenging",
+      "patient": "Patient",
+      "structured": "Structured",
+      "conversational": "Conversational"
+    },
+    "feedbackStyle": "Preferred Feedback Style",
+    "selectFeedbackStyle": "Select your preferred feedback style",
+    "feedbackStyles": {
+      "immediate": "Immediate Correction",
+      "summary": "Summary Feedback",
+      "gentle": "Gentle Correction",
+      "detailed": "Detailed Explanation",
+      "motivational": "Motivational Focus"
+    },
+    "complete": "Complete",
+    "completing": "Completing..."
+  }
+}
