@@ -11,7 +11,7 @@ export default async function ServicePage({
 
   if (userId) {
     // 인증된 사용자는 앱으로 리디렉션
-    redirect(`/${locale}/service/app`);
+    redirect(`/${locale}/service/product`);
   } else {
     // 미인증 사용자는 로그인 페이지로 리디렉션
     redirect(`/${locale}/service/auth`);

@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const locales = ["ko", "en", "es"];
 const defaultLocale = "ko";
 
-const isProtectedRoute = createRouteMatcher(["/:locale/service/app(.*)"]);
+const isProtectedRoute = createRouteMatcher(["/:locale/service/product(.*)"]);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
   if (isProtectedRoute(req)) {
