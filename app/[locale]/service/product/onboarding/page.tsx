@@ -13,10 +13,9 @@ interface OnboardingForm {
   learningLanguage: string;
   sex: string;
   learningGoals: string;
+  customLearningGoal: string;
   languageLevel: string;
   interests: string[];
-  tutorStyle: string;
-  feedbackStyle: string;
 }
 
 export default function OnboardingPage() {
@@ -37,10 +36,9 @@ export default function OnboardingPage() {
     learningLanguage: "",
     sex: "",
     learningGoals: "",
+    customLearningGoal: "",
     languageLevel: "",
     interests: [],
-    tutorStyle: "",
-    feedbackStyle: "",
   });
 
   const t = getTranslations(locale as Locale);
@@ -74,16 +72,19 @@ export default function OnboardingPage() {
     setIsLoading(true);
 
     try {
+      const finalLearningGoals =
+        formData.learningGoals === "other"
+          ? formData.customLearningGoal
+          : formData.learningGoals;
+
       const { error } = await supabase.from("user_onboarding").insert({
         clerk_user_id: user.id,
         age: formData.age,
         learning_language: formData.learningLanguage,
         sex: formData.sex,
-        learning_goals: formData.learningGoals,
+        learning_goals: finalLearningGoals,
         language_level: formData.languageLevel,
         interests: formData.interests,
-        tutor_style: formData.tutorStyle,
-        feedback_style: formData.feedbackStyle,
       });
 
       if (error) {
@@ -105,10 +106,10 @@ export default function OnboardingPage() {
     formData.learningLanguage.trim() !== "" &&
     formData.sex.trim() !== "" &&
     formData.learningGoals.trim() !== "" &&
+    (formData.learningGoals !== "other" ||
+      formData.customLearningGoal.trim() !== "") &&
     formData.languageLevel.trim() !== "" &&
-    formData.interests.length > 0 &&
-    formData.tutorStyle.trim() !== "" &&
-    formData.feedbackStyle.trim() !== "";
+    formData.interests.length > 0;
 
   const availableInterests = [
     "culture",
@@ -207,22 +208,49 @@ export default function OnboardingPage() {
 
           {/* Learning Goals */}
           <div>
-            <label
-              htmlFor="learningGoals"
-              className="block text-sm font-medium mb-2"
-            >
+            <label className="block text-sm font-medium mb-2">
               {t("onboarding.learningGoals")}
             </label>
-            <textarea
-              id="learningGoals"
-              className="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              value={formData.learningGoals}
-              onChange={(e) =>
-                handleInputChange("learningGoals", e.target.value)
-              }
-              placeholder={t("onboarding.learningGoalsPlaceholder")}
-              required
-            />
+            <div className="space-y-3">
+              {(["confidence", "thinking", "skills", "other"] as const).map(
+                (goal) => (
+                  <label
+                    key={goal}
+                    className="flex items-center space-x-2 cursor-pointer"
+                  >
+                    <input
+                      type="radio"
+                      name="learningGoals"
+                      value={goal}
+                      checked={formData.learningGoals === goal}
+                      onChange={(e) =>
+                        handleInputChange("learningGoals", e.target.value)
+                      }
+                      className="rounded border-gray-300"
+                      required
+                    />
+                    <span className="text-sm">
+                      {t(`onboarding.learningGoalOptions.${goal}`)}
+                    </span>
+                  </label>
+                )
+              )}
+            </div>
+
+            {/* Custom goal input - shown when "other" is selected */}
+            {formData.learningGoals === "other" && (
+              <div className="mt-3">
+                <Input
+                  type="text"
+                  value={formData.customLearningGoal}
+                  onChange={(e) =>
+                    handleInputChange("customLearningGoal", e.target.value)
+                  }
+                  placeholder={t("onboarding.customGoalPlaceholder")}
+                  required={formData.learningGoals === "other"}
+                />
+              </div>
+            )}
           </div>
 
           {/* Language Level */}
@@ -279,76 +307,6 @@ export default function OnboardingPage() {
                 </label>
               ))}
             </div>
-          </div>
-
-          {/* Tutor Style */}
-          <div>
-            <label
-              htmlFor="tutorStyle"
-              className="block text-sm font-medium mb-2"
-            >
-              {t("onboarding.tutorStyle")}
-            </label>
-            <select
-              id="tutorStyle"
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              value={formData.tutorStyle}
-              onChange={(e) => handleInputChange("tutorStyle", e.target.value)}
-              required
-            >
-              <option value="">{t("onboarding.selectTutorStyle")}</option>
-              <option value="encouraging">
-                {t("onboarding.tutorStyles.encouraging")}
-              </option>
-              <option value="challenging">
-                {t("onboarding.tutorStyles.challenging")}
-              </option>
-              <option value="patient">
-                {t("onboarding.tutorStyles.patient")}
-              </option>
-              <option value="structured">
-                {t("onboarding.tutorStyles.structured")}
-              </option>
-              <option value="conversational">
-                {t("onboarding.tutorStyles.conversational")}
-              </option>
-            </select>
-          </div>
-
-          {/* Feedback Style */}
-          <div>
-            <label
-              htmlFor="feedbackStyle"
-              className="block text-sm font-medium mb-2"
-            >
-              {t("onboarding.feedbackStyle")}
-            </label>
-            <select
-              id="feedbackStyle"
-              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              value={formData.feedbackStyle}
-              onChange={(e) =>
-                handleInputChange("feedbackStyle", e.target.value)
-              }
-              required
-            >
-              <option value="">{t("onboarding.selectFeedbackStyle")}</option>
-              <option value="immediate">
-                {t("onboarding.feedbackStyles.immediate")}
-              </option>
-              <option value="summary">
-                {t("onboarding.feedbackStyles.summary")}
-              </option>
-              <option value="gentle">
-                {t("onboarding.feedbackStyles.gentle")}
-              </option>
-              <option value="detailed">
-                {t("onboarding.feedbackStyles.detailed")}
-              </option>
-              <option value="motivational">
-                {t("onboarding.feedbackStyles.motivational")}
-              </option>
-            </select>
           </div>
 
           <Button

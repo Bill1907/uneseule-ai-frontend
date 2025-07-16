@@ -1,4 +1,32 @@
 {
+  "landing": {
+    "hero": {
+      "subtitle": "인공지능과 함께하는 새로운 경험을 만나보세요",
+      "startButton": "서비스 시작하기",
+      "learnMoreButton": "더 알아보기"
+    },
+    "features": {
+      "title": "주요 기능",
+      "subtitle": "혁신적인 AI 기술로 당신의 일상을 더욱 편리하게 만들어보세요",
+      "smartAI": {
+        "title": "스마트 AI",
+        "description": "최첨단 인공지능 기술로 더 정확하고 빠른 서비스를 제공합니다"
+      },
+      "fastResponse": {
+        "title": "빠른 응답",
+        "description": "실시간으로 빠르고 정확한 답변을 받아보세요"
+      },
+      "security": {
+        "title": "안전한 보안",
+        "description": "철저한 보안 시스템으로 개인정보를 안전하게 보호합니다"
+      }
+    },
+    "cta": {
+      "title": "지금 바로 시작해보세요",
+      "subtitle": "몇 분만에 가입하고 혁신적인 AI 서비스를 경험해보세요",
+      "button": "무료로 시작하기"
+    }
+  },
   "dashboard": {
     "title": "언어 학습 대시보드",
     "welcome": "안녕하세요! AI 언어 학습 서비스에 오신 것을 환영합니다.",
@@ -19,6 +47,8 @@
     }
   },
   "navigation": {
+    "home": "홈",
+    "service": "서비스",
     "dashboard": "대시보드",
     "library": "라이브러리",
     "reports": "보고서",
@@ -46,6 +76,13 @@
     "preferNotToSay": "응답하지 않음",
     "learningGoals": "학습 목표",
     "learningGoalsPlaceholder": "언어 학습의 목표를 자세히 입력해주세요",
+    "learningGoalOptions": {
+      "confidence": "자신감 향상",
+      "thinking": "생각 확장",
+      "skills": "언어 스킬",
+      "other": "기타"
+    },
+    "customGoalPlaceholder": "기타 목표를 입력해주세요",
     "languageLevel": "현재 언어 수준",
     "selectLevel": "현재 언어 수준을 선택하세요",
     "beginner": "초급",

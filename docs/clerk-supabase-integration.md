@@ -25,8 +25,6 @@ export function UserProfile() {
       console.error("Error:", error);
       return;
     }
-
-    console.log("User data:", data);
   };
 
   return (

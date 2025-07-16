@@ -5,9 +5,11 @@ import { Database } from "@/lib/database.types";
 
 type UserOnboarding = Database["public"]["Tables"]["user_onboarding"]["Row"];
 
-export async function getUserOnboarding(
-  userId: string
-): Promise<{ data: UserOnboarding | null; error: string | null }> {
+export async function getUserOnboarding(userId: string): Promise<{
+  data: UserOnboarding | null;
+  error: string | null;
+  code: string | null;
+}> {
   try {
     const supabase = await getSupabaseServerClient();
 
@@ -17,17 +19,21 @@ export async function getUserOnboarding(
       .eq("clerk_user_id", userId)
       .single();
 
-    if (error) {
-      console.error("Error fetching user onboarding:", error);
-      return { data: null, error: error.message };
+    if (!data || error?.details === "The result contains 0 rows") {
+      return { data: null, error: null, code: null };
     }
 
-    return { data, error: null };
+    if (error) {
+      return { data: null, error: error.message, code: error.code };
+    }
+
+    return { data, error: null, code: null };
   } catch (error) {
     console.error("Unexpected error in getUserOnboarding:", error);
     return {
       data: null,
       error: error instanceof Error ? error.message : "Unknown error",
+      code: null,
     };
   }
 }

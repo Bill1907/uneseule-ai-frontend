@@ -91,7 +91,7 @@ export default async function LocaleLayout({
                       <SignUpButton />
                     </SignedOut>
                     <SignedIn>
-                      <UserButton />
+                      <UserButton afterSignOutUrl={`/${locale}`} />
                     </SignedIn>
                     <LanguageToggle />
                     <ModeToggle />

@@ -19,11 +19,7 @@ export default async function AppPage({
 
   const { data, error } = await getUserOnboarding(userId);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!data) {
+  if (!data && !error) {
     redirect(`/${locale}/service/product/onboarding`);
   }
 

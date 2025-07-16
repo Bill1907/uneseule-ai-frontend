@@ -82,7 +82,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
         <SidebarFooter className="border-t">
           <div className="flex items-center justify-between px-4 py-2">
-            <UserButton afterSignOutUrl={`/${locale}/service/auth`} />
+            <UserButton afterSignOutUrl={`/${locale}`} />
             <span className="text-sm text-muted-foreground">사용자 계정</span>
           </div>
         </SidebarFooter>

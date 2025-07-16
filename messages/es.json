@@ -1,4 +1,32 @@
 {
+  "landing": {
+    "hero": {
+      "subtitle": "Experimenta un nuevo mundo con inteligencia artificial",
+      "startButton": "Comenzar",
+      "learnMoreButton": "Saber Más"
+    },
+    "features": {
+      "title": "Características Clave",
+      "subtitle": "Haz tu vida diaria más conveniente con tecnología de IA innovadora",
+      "smartAI": {
+        "title": "IA Inteligente",
+        "description": "Proporcionamos servicios más precisos y rápidos con tecnología de inteligencia artificial de vanguardia"
+      },
+      "fastResponse": {
+        "title": "Respuesta Rápida",
+        "description": "Obtén respuestas rápidas y precisas en tiempo real"
+      },
+      "security": {
+        "title": "Protección Segura",
+        "description": "Protegemos tu información personal de manera segura con sistemas de seguridad exhaustivos"
+      }
+    },
+    "cta": {
+      "title": "Comienza Ahora Mismo",
+      "subtitle": "Regístrate en minutos y experimenta servicios de IA innovadores",
+      "button": "Comenzar Gratis"
+    }
+  },
   "dashboard": {
     "title": "Panel de Aprendizaje de Idiomas",
     "welcome": "¡Bienvenido a nuestro servicio de aprendizaje de idiomas con IA!",
@@ -19,6 +47,8 @@
     }
   },
   "navigation": {
+    "home": "Inicio",
+    "service": "Servicio",
     "dashboard": "Panel de Control",
     "library": "Biblioteca",
     "reports": "Informes",
@@ -46,6 +76,13 @@
     "preferNotToSay": "Prefiero no decir",
     "learningGoals": "Objetivos de Aprendizaje",
     "learningGoalsPlaceholder": "Por favor describe tus objetivos de aprendizaje de idiomas en detalle",
+    "learningGoalOptions": {
+      "confidence": "Construcción de Confianza",
+      "thinking": "Expandir Pensamiento",
+      "skills": "Habilidades Lingüísticas",
+      "other": "Otro"
+    },
+    "customGoalPlaceholder": "Por favor ingresa tu objetivo personalizado",
     "languageLevel": "Nivel Actual del Idioma",
     "selectLevel": "Selecciona tu nivel actual del idioma",
     "beginner": "Principiante",

@@ -1,4 +1,32 @@
 {
+  "landing": {
+    "hero": {
+      "subtitle": "Experience a new world with artificial intelligence",
+      "startButton": "Get Started",
+      "learnMoreButton": "Learn More"
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "Make your daily life more convenient with innovative AI technology",
+      "smartAI": {
+        "title": "Smart AI",
+        "description": "We provide more accurate and faster services with cutting-edge artificial intelligence technology"
+      },
+      "fastResponse": {
+        "title": "Fast Response",
+        "description": "Get fast and accurate answers in real time"
+      },
+      "security": {
+        "title": "Secure Protection",
+        "description": "We safely protect your personal information with thorough security systems"
+      }
+    },
+    "cta": {
+      "title": "Start Right Now",
+      "subtitle": "Sign up in minutes and experience innovative AI services",
+      "button": "Start for Free"
+    }
+  },
   "dashboard": {
     "title": "Language Learning Dashboard",
     "welcome": "Welcome to our AI language learning service!",
@@ -19,6 +47,8 @@
     }
   },
   "navigation": {
+    "home": "Home",
+    "service": "Service",
     "dashboard": "Dashboard",
     "library": "Library",
     "reports": "Reports",
@@ -46,6 +76,13 @@
     "preferNotToSay": "Prefer not to say",
     "learningGoals": "Learning Goals",
     "learningGoalsPlaceholder": "Please describe your language learning goals in detail",
+    "learningGoalOptions": {
+      "confidence": "Confidence Building",
+      "thinking": "Expand Thinking",
+      "skills": "Language Skills",
+      "other": "Other"
+    },
+    "customGoalPlaceholder": "Please enter your custom goal",
     "languageLevel": "Current Language Level",
     "selectLevel": "Select your current language level",
     "beginner": "Beginner",
