@@ -1,6 +1,7 @@
 "use server";
 
 import { getSupabaseServerClient } from "@/lib/supabase-server";
+import { ClassContent } from "@/lib/database.types";
 
 export async function getUserLessons(
   userId: string
@@ -93,6 +94,65 @@ export async function updateLessonProgress(
     return { data, error: null };
   } catch (error) {
     console.error("Unexpected error in updateLessonProgress:", error);
+    return {
+      data: null,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+export async function getClassContents(): Promise<{
+  data: ClassContent[] | null;
+  error: string | null;
+}> {
+  try {
+    const supabase = await getSupabaseServerClient();
+
+    const { data, error } = await supabase
+      .from("class_contents")
+      .select("*")
+      .order("category", { ascending: true })
+      .order("difficulty", { ascending: true })
+      .order("title", { ascending: true });
+
+    if (error) {
+      console.error("Error fetching class contents:", error);
+      return { data: null, error: error.message };
+    }
+
+    return { data, error: null };
+  } catch (error) {
+    console.error("Unexpected error in getClassContents:", error);
+    return {
+      data: null,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
+  }
+}
+
+export async function getClassContent(
+  id: string
+): Promise<{
+  data: ClassContent | null;
+  error: string | null;
+}> {
+  try {
+    const supabase = await getSupabaseServerClient();
+
+    const { data, error } = await supabase
+      .from("class_contents")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      console.error("Error fetching class content:", error);
+      return { data: null, error: error.message };
+    }
+
+    return { data, error: null };
+  } catch (error) {
+    console.error("Unexpected error in getClassContent:", error);
     return {
       data: null,
       error: error instanceof Error ? error.message : "Unknown error",

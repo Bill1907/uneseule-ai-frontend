@@ -1,8 +1,8 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { getTranslations, type Locale } from "@/lib/translations";
+import { type Locale } from "@/lib/translations";
 import { getUserOnboarding } from "@/actions/onboarding";
-import Link from "next/link";
+import HomeScreen from "@/components/home-screen";
 
 export default async function AppPage({
   params,
@@ -10,75 +10,76 @@ export default async function AppPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const { userId } = await auth();
-  const t = getTranslations(locale as Locale);
+  const user = await currentUser();
 
-  if (!userId) {
+  if (!user) {
     redirect(`/${locale}/service/product/auth`);
   }
 
-  const { data, error } = await getUserOnboarding(userId);
+  const { data, error } = await getUserOnboarding(user.id);
 
   if (!data && !error) {
     redirect(`/${locale}/service/product/onboarding`);
   }
 
+  const childName =
+    user.firstName ||
+    (locale === "ko"
+      ? "작은 친구"
+      : locale === "es"
+        ? "pequeño amigo"
+        : "little friend");
+  const streakDays = 7;
+  const userProgress = {
+    weeklyConversations: 12,
+    growthPoints: 240,
+    thinkingOutput: 450,
+    questionsCreated: 18,
+  };
+
+  const recentLearning = [
+    {
+      id: "1",
+      title:
+        locale === "ko"
+          ? "우주는 얼마나 클까?"
+          : locale === "es"
+            ? "¿Qué tan grande es el universo?"
+            : "How big is the universe?",
+      timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000),
+      thumbnail: "🚀",
+    },
+    {
+      id: "2",
+      title:
+        locale === "ko"
+          ? "공룡은 왜 사라졌을까?"
+          : locale === "es"
+            ? "¿Por qué desaparecieron los dinosaurios?"
+            : "Why did dinosaurs disappear?",
+      timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000),
+      thumbnail: "🦕",
+    },
+    {
+      id: "3",
+      title:
+        locale === "ko"
+          ? "비는 어떻게 만들어질까?"
+          : locale === "es"
+            ? "¿Cómo se forma la lluvia?"
+            : "How is rain formed?",
+      timestamp: new Date(Date.now() - 48 * 60 * 60 * 1000),
+      thumbnail: "🌧️",
+    },
+  ];
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">{t("dashboard.title")}</h1>
-        <p className="text-muted-foreground">{t("dashboard.welcome")}</p>
-      </div>
-
-      {/* Lesson Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href={`/${locale}/service/product/lesson`}>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              레츠고 스터디
-            </h2>
-          </Link>
-          <p className="text-muted-foreground mb-4">
-            레츠고 스터디는 레츠고 스터디는 레츠고 스터디는 레츠고 스터디는
-          </p>
-        </div>
-      </section>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="p-6 bg-card rounded-lg border">
-          <h3 className="text-xl font-semibold mb-2">{t("aiChat.title")}</h3>
-          <p className="text-muted-foreground mb-4">
-            {t("aiChat.description")}
-          </p>
-          <button className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90">
-            {t("aiChat.button")}
-          </button>
-        </div>
-
-        <div className="p-6 bg-card rounded-lg border">
-          <h3 className="text-xl font-semibold mb-2">
-            {t("documentAnalysis.title")}
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            {t("documentAnalysis.description")}
-          </p>
-          <button className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90">
-            {t("documentAnalysis.button")}
-          </button>
-        </div>
-
-        <div className="p-6 bg-card rounded-lg border">
-          <h3 className="text-xl font-semibold mb-2">
-            {t("imageGeneration.title")}
-          </h3>
-          <p className="text-muted-foreground mb-4">
-            {t("imageGeneration.description")}
-          </p>
-          <button className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90">
-            {t("imageGeneration.button")}
-          </button>
-        </div>
-      </div>
-    </div>
+    <HomeScreen
+      locale={locale as Locale}
+      childName={childName}
+      streakDays={streakDays}
+      userProgress={userProgress}
+      recentLearning={recentLearning}
+    />
   );
 }

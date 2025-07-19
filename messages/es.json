@@ -61,6 +61,38 @@
     "english": "English",
     "spanish": "Español"
   },
+  "home": {
+    "greeting": "¡Hola {{name}}! ¿En qué pensamos hoy?",
+    "streak": "🔥 ¡{{days}} días de viaje de pensamiento!",
+    "aiPrompt": "¿Qué te da curiosidad hoy?",
+    "startButton": "Empecemos",
+    "recentLearning": "Historial de Aprendizaje Reciente",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "daysAgo": "Hace {{days}} días"
+  },
+  "activities": {
+    "art": "Historias de Arte con Miguel Ángel",
+    "artDesc": "Explora el mundo de la creatividad con grandes artistas",
+    "nature": "¿Cómo Crecen las Semillas?",
+    "natureDesc": "Descubramos juntos el misterioso proceso de crecimiento de la naturaleza",
+    "imagination": "¿Y Si... Juego de Imaginación",
+    "imaginationDesc": "Libera tu imaginación para crear nuevas historias"
+  },
+  "progress": {
+    "weeklyConversations": "Conversaciones Semanales",
+    "growthPoints": "Puntos de Crecimiento",
+    "thinkingOutput": "Producción de Pensamiento",
+    "questionsCreated": "Preguntas Creadas",
+    "conversations": "conversaciones",
+    "points": "puntos",
+    "words": "palabras",
+    "questions": "preguntas"
+  },
+  "parent": {
+    "todayInsights": "Ver Insights de Aprendizaje de Hoy",
+    "growthReport": "Ver Reporte de Crecimiento de Tu Hijo"
+  },
   "onboarding": {
     "title": "Comenzar a Aprender Idiomas",
     "subtitle": "Por favor proporciona información para el aprendizaje personalizado de idiomas",
@@ -126,5 +158,22 @@
     },
     "complete": "Completar",
     "completing": "Completando..."
+  },
+  "library": {
+    "title": "Biblioteca de Aprendizaje",
+    "subtitle": "Explora varios contenidos para aprender con IA",
+    "startLearning": "Comenzar a Aprender",
+    "difficulty": "Dificultad",
+    "noDescription": "Sin descripción disponible",
+    "noContent": "No hay contenido disponible en este momento",
+    "loadError": "Error al cargar el contenido",
+    "other": "Otros"
+  },
+  "class": {
+    "notFound": "Clase No Encontrada",
+    "notFoundDescription": "La clase que buscas no existe o ha sido eliminada.",
+    "backToLibrary": "Volver a la Biblioteca",
+    "noSlides": "Sin Diapositivas Disponibles",
+    "noSlidesDescription": "Esta clase no tiene diapositivas asociadas."
   }
 }

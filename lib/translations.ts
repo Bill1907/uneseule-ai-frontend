@@ -13,7 +13,7 @@ export const translations = {
   es: esMessages,
 };
 
-export function getTranslation(locale: Locale, key: string) {
+export function getTranslation(locale: Locale, key: string, params?: Record<string, string | number>) {
   const keys = key.split(".");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let value: any = translations[locale];
@@ -22,9 +22,18 @@ export function getTranslation(locale: Locale, key: string) {
     value = value?.[k];
   }
 
-  return value || key;
+  if (!value) return key;
+
+  // Handle interpolation
+  if (params && typeof value === 'string') {
+    return value.replace(/\{\{(\w+)\}\}/g, (match, paramKey) => {
+      return params[paramKey]?.toString() || match;
+    });
+  }
+
+  return value;
 }
 
 export function getTranslations(locale: Locale) {
-  return (key: string) => getTranslation(locale, key);
+  return (key: string, params?: Record<string, string | number>) => getTranslation(locale, key, params);
 }

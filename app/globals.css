@@ -157,3 +157,17 @@ html {
 main {
   @apply transition-opacity duration-150 ease-in-out;
 }
+
+/* Wave animation for loading screen */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-wave {
+  animation: wave 1.5s ease-in-out infinite;
+}

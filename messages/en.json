@@ -61,6 +61,38 @@
     "english": "English",
     "spanish": "Español"
   },
+  "home": {
+    "greeting": "Hi {{name}}! What should we think about today?",
+    "streak": "🔥 {{days}} days of thinking journey!",
+    "aiPrompt": "What are you curious about today?",
+    "startButton": "Let's Start",
+    "recentLearning": "Recent Learning History",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{{days}} days ago"
+  },
+  "activities": {
+    "art": "Art Stories with Michelangelo",
+    "artDesc": "Explore the world of creativity with great artists",
+    "nature": "How Do Seeds Grow?",
+    "natureDesc": "Let's discover nature's mysterious growth process together",
+    "imagination": "What If... Imagination Play",
+    "imaginationDesc": "Unleash your imagination to create new stories"
+  },
+  "progress": {
+    "weeklyConversations": "Weekly Conversations",
+    "growthPoints": "Growth Points",
+    "thinkingOutput": "Thinking Output",
+    "questionsCreated": "Questions Created",
+    "conversations": "conversations",
+    "points": "points",
+    "words": "words",
+    "questions": "questions"
+  },
+  "parent": {
+    "todayInsights": "Check Today's Learning Insights",
+    "growthReport": "View Your Child's Growth Report"
+  },
   "onboarding": {
     "title": "Start Learning Languages",
     "subtitle": "Please provide information for personalized language learning",
@@ -126,5 +158,22 @@
     },
     "complete": "Complete",
     "completing": "Completing..."
+  },
+  "library": {
+    "title": "Learning Library",
+    "subtitle": "Explore various content to learn with AI",
+    "startLearning": "Start Learning",
+    "difficulty": "Difficulty",
+    "noDescription": "No description available",
+    "noContent": "No content available at this time",
+    "loadError": "Error loading content",
+    "other": "Other"
+  },
+  "class": {
+    "notFound": "Class Not Found",
+    "notFoundDescription": "The class you're looking for doesn't exist or has been removed.",
+    "backToLibrary": "Back to Library",
+    "noSlides": "No Slides Available",
+    "noSlidesDescription": "This class doesn't have any slides associated with it."
   }
 }
