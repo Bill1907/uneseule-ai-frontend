@@ -66,5 +66,7 @@ export function LoadingSpinner() {
 
 // Export a page loading component with custom text
 export function PageLoadingScreen() {
-  return <LoadingScreen text="Preparing your learning journey..." logoSize={120} />;
+  return (
+    <LoadingScreen text="Preparing your learning journey..." logoSize={120} />
+  );
 }
