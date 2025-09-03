@@ -7,6 +7,7 @@ import { getUserOnboarding } from "@/actions/onboarding";
 import { getClassContent } from "@/actions/lessons";
 import { getTranslations, type Locale } from "@/lib/translations";
 import { LoadingSpinner } from "@/components/loading-screen";
+// Google Slides API is now handled by Edge Function
 
 export default async function ClassPage({
   params,
@@ -21,21 +22,35 @@ export default async function ClassPage({
     redirect(`/${locale}/service/auth`);
   }
 
-  const { data: onboardingData, error: onboardingError } = await getUserOnboarding(user.id);
-  
+  const { data: onboardingData, error: onboardingError } =
+    await getUserOnboarding(user.id);
+
   if (onboardingError) {
     redirect(`/${locale}/service/product/onboarding`);
   }
 
   const { data: classContent, error: classError } = await getClassContent(id);
 
+  // const testServer = async () => {
+  //   const response = await fetch(
+  //     `http://localhost:8080/class-content/${id}/update-slides`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log(data);
+  // };
+  // testServer();
+
   if (classError || !classContent) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">
-            {t("class.notFound")}
-          </h1>
+          <h1 className="text-2xl font-bold mb-4">{t("class.notFound")}</h1>
           <p className="text-muted-foreground mb-6">
             {t("class.notFoundDescription")}
           </p>
@@ -50,6 +65,7 @@ export default async function ClassPage({
     );
   }
 
+  console.log(classContent);
   // Prepare dynamic variables for the voice agent
   const dynamicVariables = {
     userName: user.fullName || "",
@@ -65,8 +81,8 @@ export default async function ClassPage({
     lessonDescription: classContent.description || "",
     lessonCategory: classContent.category || "",
     lessonDifficulty: classContent.difficulty || "",
-    lessonSlides: classContent.slide_details
-      ? JSON.stringify(classContent.slide_details)
+    lessonSlides: classContent.slide_details?.slides
+      ? JSON.stringify(classContent.slide_details?.slides)
       : "",
   };
 
@@ -74,9 +90,7 @@ export default async function ClassPage({
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">
-            {t("class.noSlides")}
-          </h1>
+          <h1 className="text-2xl font-bold mb-4">{t("class.noSlides")}</h1>
           <p className="text-muted-foreground mb-6">
             {t("class.noSlidesDescription")}
           </p>
@@ -90,7 +104,6 @@ export default async function ClassPage({
       </div>
     );
   }
-
   return (
     <div className="w-full h-full flex">
       {/* Left: GoogleSlideViewer */}

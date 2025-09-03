@@ -62,7 +62,7 @@ export interface Database {
           description: string | null;
           category: string | null;
           difficulty: string | null;
-          slide_details: Json | null;
+          slide_details: { title: string; slides: Object[] } | null;
           updated_at: string;
           created_at: string;
         };

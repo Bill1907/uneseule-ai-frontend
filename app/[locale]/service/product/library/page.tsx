@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
+import { useUser, useSession } from "@clerk/nextjs";
 import { getClassContents } from "@/actions/lessons";
 import { ClassContent } from "@/lib/database.types";
 import { getTranslations, type Locale } from "@/lib/translations";
@@ -28,10 +28,44 @@ export default function LibraryPage({
 }) {
   const router = useRouter();
   const { user } = useUser();
+  const { session } = useSession();
   const [locale, setLocale] = useState<string>("");
   const [classContents, setClassContents] = useState<ClassContent[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const testServer = async () => {
+    if (!session) {
+      console.error("No session available");
+      return;
+    }
+
+    try {
+      const token = await session.getToken();
+      if (!token) {
+        console.error("No token available");
+        return;
+      }
+
+      const response = await fetch("http://localhost:8080/class-content/sync", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error calling server:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (session) {
+      testServer();
+    }
+  }, [session]);
 
   useEffect(() => {
     params.then((p) => setLocale(p.locale));

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,7 @@ interface LoadingScreenProps {
   className?: string;
 }
 
-export default function LoadingScreen({
+export const LoadingScreen = memo(function LoadingScreen({
   text = "Loading...",
   logoSize = 120,
   className,
@@ -57,16 +57,17 @@ export default function LoadingScreen({
       </div>
     </div>
   );
-}
+});
 
 // Export a simpler loading component for use in Suspense boundaries
-export function LoadingSpinner() {
+export const LoadingSpinner = memo(function LoadingSpinner() {
   return <LoadingScreen text="Loading..." logoSize={80} />;
-}
+});
 
 // Export a page loading component with custom text
-export function PageLoadingScreen() {
+export const PageLoadingScreen = memo(function PageLoadingScreen() {
   return (
     <LoadingScreen text="Preparing your learning journey..." logoSize={120} />
   );
-}
+});
+
