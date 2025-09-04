@@ -62,6 +62,25 @@ supabase/functions/   # Edge Functions (외부 API 통합)
 messages/            # 다국어 번역 파일
 ```
 
+## 주요 페이지 구조
+
+### 인증 흐름
+- `/auth/sign-in` - 로그인 페이지
+- `/auth/sign-up` - 회원가입 페이지
+- `/auth/sso-callback` - SSO 콜백 처리
+
+### 온보딩 프로세스
+1. `/onboarding` - 사용자 정보 수집
+2. `/onboarding/language` - 학습 언어 선택
+3. `/onboarding/goals` - 학습 목표 설정
+4. `/onboarding/confirmation` - 설정 확인 및 완료
+
+### 메인 서비스
+- `/service/product` - 대시보드 (학습 진행 상황)
+- `/service/product/library` - 학습 콘텐츠 라이브러리
+- `/service/product/class/[id]` - 개별 수업 페이지 (AI 대화)
+- `/service/product/chat` - AI 채팅 인터페이스
+
 ## 주요 기능
 
 ### 인증 및 데이터베이스
@@ -103,7 +122,25 @@ const supabase = useSupabaseClient();
 const { data, error } = await supabase.from("table_name").select("*");
 ```
 
-## license
+## 배포
+
+### Vercel 배포 (권장)
+
+[Vercel Platform](https://vercel.com)을 통한 자동 배포가 가장 간단합니다.
+
+### 환경 설정
+1. Vercel 프로젝트에 환경 변수 설정
+2. Supabase 프로젝트 연결
+3. Clerk 애플리케이션 연결
+
+## 개발 팀
+
+프로젝트 개선에 참여하고 싶으시다면:
+1. 이슈를 확인하거나 생성해주세요
+2. 풀 리퀘스트를 제출해주세요
+3. 코드 스타일 가이드를 준수해주세요
+
+## 라이선스
 
 이 프로젝트는 내부 사용을 위한 비공개 프로젝트입니다.
 
