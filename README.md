@@ -1,4 +1,4 @@
-# 우리의 언어 AI 프론트엔드
+# Uneseule AI 프론트엔드
 
 [Next.js 15](https://nextjs.org)를 기반으로 구축된 AI 기반 언어 학습 플랫폼입니다.
 
@@ -103,27 +103,7 @@ const supabase = useSupabaseClient();
 const { data, error } = await supabase.from("table_name").select("*");
 ```
 
-## 배포
-
-### Vercel 배포 (권장)
-
-[Vercel Platform](https://vercel.com)을 통한 자동 배포가 가장 간단합니다.
-
-### 환경 설정
-
-1. Vercel 프로젝트에 환경 변수 설정
-2. Supabase 프로젝트 연결
-3. Clerk 애플리케이션 연결
-
-## 기여하기
-
-프로젝트 개선에 참여하고 싶으시다면:
-
-1. 이슈를 확인하거나 생성해주세요
-2. 풀 리퀘스트를 제출해주세요
-3. 코드 스타일 가이드를 준수해주세요
-
-## 라이선스
+## license
 
 이 프로젝트는 내부 사용을 위한 비공개 프로젝트입니다.
 
